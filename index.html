@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Player — Стильный плеер для Linux</title>
+    <title>Music Player — стильный плеер для Linux</title>
     <style>
         * {
             margin: 0;
@@ -12,14 +12,14 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             min-height: 100vh;
             color: #fff;
         }
 
         .container {
-            max-width: 1300px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
         }
@@ -27,7 +27,7 @@
         /* Шапка */
         .header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
 
         .header h1 {
@@ -39,34 +39,30 @@
             background-clip: text;
         }
 
-        .version {
+        .version-badge {
             display: inline-block;
             background: rgba(255,255,255,0.1);
             padding: 5px 15px;
             border-radius: 20px;
             font-size: 14px;
-            margin-bottom: 20px;
+            margin: 10px 5px;
         }
 
         .badge {
             display: inline-block;
             background: #4CAF50;
-            padding: 8px 16px;
+            padding: 5px 12px;
             border-radius: 20px;
-            font-size: 14px;
-            margin: 5px;
+            font-size: 12px;
+            margin: 0 5px;
         }
 
-        .badge.blue {
-            background: #2196F3;
-        }
-
-        .badge.orange {
-            background: #ff9800;
-        }
+        .badge.blue { background: #2196F3; }
+        .badge.orange { background: #ff9800; }
+        .badge.purple { background: #9C27B0; }
 
         .tagline {
-            font-size: 20px;
+            font-size: 18px;
             color: #ccc;
             margin-top: 20px;
         }
@@ -86,13 +82,12 @@
             font-weight: bold;
             color: white;
             text-decoration: none;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s;
             box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
         }
 
         .download-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
         }
 
         .download-note {
@@ -103,18 +98,18 @@
 
         .code-block {
             background: rgba(0,0,0,0.5);
-            padding: 15px;
+            padding: 12px 20px;
             border-radius: 10px;
             font-family: monospace;
             font-size: 14px;
-            margin-top: 20px;
+            margin-top: 15px;
             display: inline-block;
         }
 
         /* Сетка возможностей */
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
             margin: 60px 0;
         }
@@ -123,8 +118,8 @@
             background: rgba(255,255,255,0.05);
             backdrop-filter: blur(10px);
             border-radius: 20px;
-            padding: 30px;
-            transition: transform 0.3s;
+            padding: 25px;
+            transition: 0.3s;
             border: 1px solid rgba(255,255,255,0.1);
         }
 
@@ -134,18 +129,19 @@
         }
 
         .feature-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
+            font-size: 40px;
+            margin-bottom: 15px;
         }
 
         .feature-card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
+            font-size: 20px;
+            margin-bottom: 10px;
         }
 
         .feature-card p {
             color: #bbb;
-            line-height: 1.6;
+            font-size: 14px;
+            line-height: 1.5;
         }
 
         /* Горячие клавиши */
@@ -153,129 +149,114 @@
             background: rgba(0,0,0,0.3);
             border-radius: 20px;
             padding: 40px;
-            margin: 60px 0;
+            margin: 50px 0;
         }
 
         .hotkeys h2 {
             text-align: center;
             margin-bottom: 30px;
-            font-size: 32px;
+            font-size: 28px;
         }
 
         .hotkeys-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
         }
 
         .hotkey {
             background: rgba(255,255,255,0.05);
             border-radius: 12px;
-            padding: 15px;
+            padding: 12px;
             text-align: center;
         }
 
         .hotkey-key {
             background: #333;
-            padding: 8px 16px;
-            border-radius: 8px;
+            padding: 5px 12px;
+            border-radius: 6px;
             font-family: monospace;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
             display: inline-block;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .hotkey-desc {
             color: #ccc;
-            font-size: 14px;
-        }
-
-        /* Скриншот */
-        .screenshot {
-            background: rgba(255,255,255,0.05);
-            border-radius: 20px;
-            padding: 40px;
-            text-align: center;
-            margin: 60px 0;
-        }
-
-        .screenshot-placeholder {
-            background: linear-gradient(135deg, #2d2d2d, #1a1a1a);
-            border-radius: 12px;
-            padding: 60px;
-            font-size: 48px;
+            font-size: 12px;
         }
 
         /* Автор */
         .author-section {
             background: rgba(255,255,255,0.05);
             border-radius: 20px;
-            padding: 40px;
-            margin: 60px 0;
+            padding: 35px;
+            margin: 50px 0;
         }
 
         .author-info {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 25px;
             flex-wrap: wrap;
         }
 
         .author-avatar {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             background: linear-gradient(135deg, #667eea, #764ba2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 40px;
+            font-size: 35px;
         }
 
         .author-text h3 {
-            font-size: 28px;
-            margin-bottom: 10px;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .author-text p {
+            color: #bbb;
         }
 
         .other-apps {
-            margin-top: 20px;
+            margin-top: 15px;
         }
 
         .app-link {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             background: rgba(255,255,255,0.1);
-            padding: 12px 24px;
-            border-radius: 12px;
+            padding: 10px 20px;
+            border-radius: 10px;
             text-decoration: none;
             color: white;
             transition: 0.3s;
-            margin-right: 15px;
+            margin-right: 12px;
+            margin-top: 10px;
         }
 
         .app-link:hover {
             background: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
         }
 
         /* Подвал */
         .footer {
             text-align: center;
-            padding: 40px;
+            padding: 30px;
             border-top: 1px solid rgba(255,255,255,0.1);
             margin-top: 40px;
             color: #888;
+            font-size: 14px;
         }
 
         .footer a {
             color: #4CAF50;
             text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
@@ -292,23 +273,24 @@
         <div class="header">
             <h1>🎵 Music Player</h1>
             <div>
-                <span class="version">Актуальная версия 1.2</span>
+                <span class="version-badge">Версия 1.2.0</span>
                 <span class="badge">Автосохранение</span>
                 <span class="badge blue">Горячие клавиши</span>
                 <span class="badge orange">Тёмная тема</span>
+                <span class="badge purple">Автопереход</span>
             </div>
             <div class="tagline">
                 Стильный музыкальный плеер для Linux с тёмной темой
             </div>
         </div>
 
-        <!-- Кнопка скачивания -->
+        <!-- Кнопка скачивания - ВСТАВЬТЕ ВАШУ ССЫЛКУ С ЯНДЕКС ДИСКА -->
         <div class="download-section">
-            <a href="https://disk.yandex.ru/d/ВАША_ССЫЛКА" class="download-btn">
+            <a href="https://disk.yandex.ru/d/ВАША_ССЫЛКА_ЗДЕСЬ" class="download-btn">
                 📥 Скачать Music Player (.deb)
             </a>
             <div class="download-note">
-                Linux Mint / Ubuntu / Debian
+                Для Linux Mint / Ubuntu / Debian
             </div>
             <div class="code-block">
                 <code>sudo dpkg -i music-player_1.2.0_all.deb</code>
@@ -320,32 +302,32 @@
             <div class="feature-card">
                 <div class="feature-icon">🎨</div>
                 <h3>Стильный дизайн</h3>
-                <p>Современный тёмный интерфейс с плавными анимациями и приятными цветами</p>
+                <p>Современный тёмный интерфейс с плавными анимациями</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">💾</div>
                 <h3>Автосохранение</h3>
-                <p>Плейлист сохраняется автоматически. Песни не исчезают после перезапуска</p>
+                <p>Плейлист сохраняется автоматически. Песни не исчезают</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">⌨️</div>
                 <h3>Горячие клавиши</h3>
-                <p>Управляйте плеером не отвлекаясь от работы — стрелочки и пробел</p>
+                <p>Управляйте плеером стрелочками и пробелом</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">🔄</div>
                 <h3>Автопереход</h3>
-                <p>Автоматическое переключение на следующий трек. Можно отключить</p>
+                <p>Автоматическое переключение на следующий трек</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">🎵</div>
-                <h3>Поддержка форматов</h3>
-                <p>MP3, WAV, OGG — любые популярные аудиоформаты</p>
+                <h3>Все форматы</h3>
+                <p>Поддержка MP3, WAV, OGG и других форматов</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">🔊</div>
-                <h3>Регулировка громкости</h3>
-                <p>Ползунок громкости и управление стрелочками влево-вправо</p>
+                <h3>Регулировка</h3>
+                <p>Ползунок громкости и управление стрелочками</p>
             </div>
         </div>
 
@@ -353,60 +335,27 @@
         <div class="hotkeys">
             <h2>⌨️ Горячие клавиши</h2>
             <div class="hotkeys-grid">
-                <div class="hotkey">
-                    <div class="hotkey-key">← / →</div>
-                    <div class="hotkey-desc">Уменьшить / Увеличить громкость</div>
-                </div>
-                <div class="hotkey">
-                    <div class="hotkey-key">↑ / ↓</div>
-                    <div class="hotkey-desc">Следующий / Предыдущий трек</div>
-                </div>
-                <div class="hotkey">
-                    <div class="hotkey-key">␣ (Пробел)</div>
-                    <div class="hotkey-desc">Пауза / Воспроизведение</div>
-                </div>
-                <div class="hotkey">
-                    <div class="hotkey-key">Ctrl + S</div>
-                    <div class="hotkey-desc">Сохранить плейлист</div>
-                </div>
-                <div class="hotkey">
-                    <div class="hotkey-key">Delete</div>
-                    <div class="hotkey-desc">Удалить выбранный трек</div>
-                </div>
-                <div class="hotkey">
-                    <div class="hotkey-key">Enter</div>
-                    <div class="hotkey-desc">Пауза / Воспроизведение</div>
-                </div>
+                <div class="hotkey"><div class="hotkey-key">← / →</div><div class="hotkey-desc">Громкость -/+</div></div>
+                <div class="hotkey"><div class="hotkey-key">↑ / ↓</div><div class="hotkey-desc">Пред./След. трек</div></div>
+                <div class="hotkey"><div class="hotkey-key">␣ Пробел</div><div class="hotkey-desc">Пауза / Плей</div></div>
+                <div class="hotkey"><div class="hotkey-key">Ctrl + S</div><div class="hotkey-desc">Сохранить плейлист</div></div>
+                <div class="hotkey"><div class="hotkey-key">Delete</div><div class="hotkey-desc">Удалить трек</div></div>
+                <div class="hotkey"><div class="hotkey-key">Enter</div><div class="hotkey-desc">Пауза / Плей</div></div>
             </div>
-        </div>
-
-        <!-- Скриншот (замените на реальный) -->
-        <div class="screenshot">
-            <h2>📸 Интерфейс</h2>
-            <div class="screenshot-placeholder">
-                🎵 Тёмная тема | Плейлист | Управление
-            </div>
-            <p style="margin-top: 20px; color: #aaa;">Скоро будет скриншот приложения</p>
         </div>
 
         <!-- Об авторе -->
         <div class="author-section">
-            <h2 style="margin-bottom: 25px;">👨‍💻 Об авторе</h2>
+            <h2 style="margin-bottom: 20px;">👨‍💻 Об авторе</h2>
             <div class="author-info">
-                <div class="author-avatar">
-                    🎧
-                </div>
+                <div class="author-avatar">🎧</div>
                 <div class="author-text">
-                    <h3>BesCop</h3>
-                    <p>Разработчик. Создаю полезные приложения для Linux.</p>
+                    <h3>Илья</h3>
+                    <p>Разработчик из России. Создаю полезные приложения для Linux.</p>
                     <div class="other-apps">
-                        <strong style="display: block; margin-bottom: 10px;">Другие приложения автора:</strong>
-                        <a href="#" class="app-link" id="kopilkaLink">
-                            💰 Копилка — учёт финансов
-                        </a>
-                        <a href="#" class="app-link" id="musicPlayerLink">
-                            🎵 Music Player — музыкальный плеер
-                        </a>
+                        <strong>Другие приложения автора:</strong>
+                        <a href="#" class="app-link" id="kopilkaLink">💰 Копилка — учёт финансов</a>
+                        <a href="#" class="app-link" id="musicPlayerLink">🎵 Music Player — музыкальный плеер</a>
                     </div>
                 </div>
             </div>
@@ -414,28 +363,18 @@
 
         <!-- Подвал -->
         <div class="footer">
-            <p>© 2026 BesCop. Все права защищены.</p>
+            <p>© 2024 Илья</p>
             <p>
                 <a href="https://github.com/YOUR_USERNAME/music-player">GitHub</a> |
-                <a href="https://github.com/razrabotchik-kop/music-player/issues">Сообщить о проблеме</a>
+                <a href="https://github.com/YOUR_USERNAME/music-player/issues">Сообщить о проблеме</a>
             </p>
         </div>
     </div>
 
     <script>
-        // Замените YOUR_USERNAME на ваш GitHub ник
-        // Или просто уберите ссылки на GitHub если не нужны
-        
-        // Ссылка на Копилку (укажите вашу реальную ссылку)
-        document.getElementById('kopilkaLink').href = 'https://razrabotchik-kop.github.io/bodbank/';
-        
-        // Ссылка на GitHub (если есть)
-        const githubLinks = document.querySelectorAll('.footer a');
-        githubLinks.forEach(link => {
-            if (link.href.includes('YOUR_USERNAME')) {
-                link.href = link.href.replace('YOUR_USERNAME', 'ВАШ_НИКНЕЙМ');
-            }
-        });
+        // Вставьте сюда ссылки на ваши приложения
+        document.getElementById('kopilkaLink').href = 'https://disk.yandex.ru/d/ССЫЛКА_НА_КОПИЛКУ';
+        document.getElementById('musicPlayerLink').href = 'https://disk.yandex.ru/d/uylsBFjylMyBww';
     </script>
 </body>
 </html>
